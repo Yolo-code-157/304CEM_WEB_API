@@ -26,7 +26,7 @@ content:{
     required:true
 },
 images:{
-    type:Object,
+    type:String,
     required:true
 },
 category:{

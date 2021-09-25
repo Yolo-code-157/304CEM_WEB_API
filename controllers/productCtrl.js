@@ -20,11 +20,15 @@ createProduct: async (req,res) =>{
         const newProduct = new Products({
             product_id , title:title.toLowerCase(), price, description, content, images, category
         })
+
       await newProduct.save()
-        return res.json({msg:'Created the Product'})
-      } catch (err) {
-          return res.status(500).json({msg : err.message})
-      }
+        
+      return res.json({msg:'Created the Product'})
+      //return res.json(newProduct)
+      
+    } catch (err) {
+        return res.status(500).json({msg : err.message})    
+    }
 },
 deleteProduct: async (req,res) =>{
     try {
@@ -36,12 +40,11 @@ deleteProduct: async (req,res) =>{
 },
 updateProduct: async (req,res) =>{
     try {
-     
+
     } catch (err) {
         return res.status(500).json({msg : err.message})
     }
 },
-
 
 }
 
