@@ -43,6 +43,21 @@ router.post('/upload', (req,res) =>{
     }
 })
 
+router.post('/destroy', (req,res)=>{
+    try {
+       const {public_id} = req.body; 
+       if(!public_id) return res.status(400).json({msg:'No image selected'})
+
+       cloudinary.v2.uploader.destroy(public_id, async(err, result)=>{
+           if(err) throw err;
+
+           res.json({msg: 'Deleted image successfully'})
+       })
+    } catch (err) {
+        return res.status(500).json({msg: err.message})
+    }
+})
+
 const removeTemp = (path) =>{
     fs.unlink(path,err =>{
         if(err) throw err;
