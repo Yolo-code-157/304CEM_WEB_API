@@ -3,7 +3,15 @@ const Products = require('../models/productModel');
 const productCtrl = {
 getProducts: async (req,res) =>{
     try {
-        
+        //const features = new APIfeatures(Products.find(), req.query).filtering().sorting().paginating()
+        const products = await Products.find()
+
+        // return res.json({
+        //     status: "success",
+        //     result: products.length,
+        //     products
+        // })
+        return res.json(products)
     } catch (err) {
         return res.status(500).json({msg : err.message})
     }
@@ -30,6 +38,7 @@ createProduct: async (req,res) =>{
         return res.status(500).json({msg : err.message})    
     }
 },
+
 deleteProduct: async (req,res) =>{
     try {
         await Products.findByIdAndDelete(req.params.id)
@@ -38,8 +47,17 @@ deleteProduct: async (req,res) =>{
         return res.status(500).json({msg : err.message})
     }
 },
+
 updateProduct: async (req,res) =>{
     try {
+        const { title, price, description, content, images, category} = req.body; 
+
+        if(!images) return res.status(400).json({msg:'No image upload'})
+        await Products.findOneAndUpdate({_id: req.params.id},{
+          title:title.toLowerCase(), price, description, content, images, category
+        })
+
+        return res.json({msg:"Updated the Product"})
 
     } catch (err) {
         return res.status(500).json({msg : err.message})
