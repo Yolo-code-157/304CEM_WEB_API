@@ -1,11 +1,21 @@
 const Products = require('../models/productModel');
 
+class APIfeatures {
+    constructor(query,queryString){
+        this.query=query;
+        this.queryString= queryString;
+    }
+    filtering(){}
+    sorting(){}
+    paginating(){}
+}
+
 const productCtrl = {
 getProducts: async (req,res) =>{
     try {
-        //const features = new APIfeatures(Products.find(), req.query).filtering().sorting().paginating()
-        const products = await Products.find()
-
+        const features = new APIfeatures(Products.find(), req.query)
+        const products = await features.query
+        
         // return res.json({
         //     status: "success",
         //     result: products.length,
