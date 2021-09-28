@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import Menu from "./icons/bar.svg";
 import Cart from "./icons/cart.svg";
 import Close from "./icons/close.svg";
+
 import "./Header.css"
 
 function Header(){

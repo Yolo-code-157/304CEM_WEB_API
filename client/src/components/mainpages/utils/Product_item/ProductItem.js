@@ -5,8 +5,8 @@ import "./ProductItem.css"
 function ProductItem({product}) {
     return (
         <div className="product_card">
-           <img src={product.images.url} alt=""/>
-
+           {/* <img src={product.images.url} alt=""/> */}
+           <img src={product.images} alt=""/>
            <div className="product_box">
                <h2>{product.title}</h2>
 

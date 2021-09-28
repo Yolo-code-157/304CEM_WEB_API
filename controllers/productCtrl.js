@@ -56,6 +56,7 @@ getProducts: async (req,res) =>{
         return res.status(500).json({msg : err.message})
     }
 },
+
 createProduct: async (req,res) =>{
     try {
         const {product_id, title, price, description, content, images, category} = req.body; 

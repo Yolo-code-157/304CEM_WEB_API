@@ -1,7 +1,7 @@
 .products{
-    width:100%;
+    width:120%;
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
     justify-items: center;
-    margin:20px auto;
+    margin:30px auto;
 }

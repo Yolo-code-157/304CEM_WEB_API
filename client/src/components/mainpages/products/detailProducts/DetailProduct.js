@@ -19,22 +19,21 @@ function DetailProduct() {
         }
     },[products,params])
 
-    console.log(DetailProduct)
+    console.log(detailProduct)
     if(detailProduct.length === 0) return 0;
 
     return(
         <div className="detail">
-            <img src={detailProduct.images.url} alt=""/>
-
-            <div className="box-detail">
+            <img src={detailProduct.images} alt=""/>
+            <div className="box-detial">
                 <div className="row">
                     <h2>{detailProduct.title}</h2>
-                    <h6>{detailProduct.product._id}</h6>
+                    <h6>{detailProduct.product_id}</h6><br/>
                 </div>
-                <span>${detailProduct.price}</span>
-                <p>{detailProduct.content}</p>
-                <p>{detailProduct.description}</p>
-                <p>Sold: {detailProduct.sold}</p>
+                <span>${detailProduct.price}</span><br/><br/>
+                <p>{detailProduct.content}</p><br/><br/><br/>
+                <p>{detailProduct.description}</p><br/><br/>
+                <p>Sold: {detailProduct.sold}</p><br/><br/>
                 <Link to="/cart" className="cart">BUY NOW</Link>
             </div>
         </div>
