@@ -1,4 +1,4 @@
-/* header{
+header{
     min-height: 70px;
     width: 100%;
     overflow: hidden;
@@ -7,7 +7,9 @@
     justify-content: space-around;
     align-items: center;
     border-bottom:1px solid hotpink;
-    background: rgb(255, 255, 255);
+    background: rgb(220, 234, 250);
+    border-radius: 10px;
+    padding: 0 40px;
 }
 
 header .logo{
@@ -16,13 +18,13 @@ header .logo{
 
 header a{
     text-transform: uppercase;
-    color:rgb(66, 66, 66);
+    color:rgb(46, 46, 46);
 }
 
 header ul li{
     display: inline-block;
     opacity: 0.7;
-    padding:0 20px
+    padding:0 30px
 }
 header ul li:hover{
     opacity: 1;
@@ -37,11 +39,11 @@ header ul li:hover{
 }
 .cart-icon span{
     background: salmon;
-    border-radius: 10px;
+    border-radius: 20px;
     color: wheat;
     position: absolute;
-    top:-10px;
-    right:25px;
-    padding: 5px 5px;
-    font-size: 10px;
-} */
+    top: -12px;
+    right: -10px;
+    padding: 3px 6px;
+    font-size: 15px;
+}
