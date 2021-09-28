@@ -5,15 +5,33 @@ class APIfeatures {
         this.query=query;
         this.queryString= queryString;
     }
-    filtering(){}
-    sorting(){}
-    paginating(){}
+    filtering(){
+        const queryObj = {...this.queryString}
+
+        
+        const excludedFields = ['page','sort','limit']
+        excludedFields.forEach(el => delete(queryObj[el]))
+
+        
+        let queryStr = JSON.stringify(queryObj)
+        queryStr = queryStr.replace(/\b(gte|gt|lt|lte|regex)\b/g, match => '$' + match) //gte lt means lessthan greater than
+        
+        this.query.find(JSON.parse(queryStr))
+        console.log(queryStr)
+        return this;
+    }
+    sorting(){
+
+    }
+    paginating(){
+
+    }
 }
 
 const productCtrl = {
 getProducts: async (req,res) =>{
     try {
-        const features = new APIfeatures(Products.find(), req.query)
+        const features = new APIfeatures(Products.find(), req.query).filtering()
         const products = await features.query
         
         // return res.json({
