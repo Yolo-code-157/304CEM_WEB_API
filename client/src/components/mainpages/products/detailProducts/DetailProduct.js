@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react'
 import {useParams, Link}  from "react-router-dom";
 import {GlobalState} from "../../../../GlobalState"
-// import ProductItem from "../../utils/Product_item/ProductItem"
+import ProductItem from "../../utils/Product_item/ProductItem"
 
 import "./DetailProduct.css"
 
@@ -12,17 +12,18 @@ function DetailProduct() {
     const[detailProduct,setDetailProduct] = useState([])
 
     useEffect(()=>{
-        if(params){
+        if(params.id){
             products.forEach(product =>{
                 if(product._id === params.id) setDetailProduct(product)
             })
         }
-    },[products,params])
+    },[products,params.id])
 
     console.log(detailProduct)
     if(detailProduct.length === 0) return 0;
 
     return(
+        <>
         <div className="detail">
             <img src={detailProduct.images} alt=""/>
             <div className="box-detial">
@@ -37,6 +38,18 @@ function DetailProduct() {
                 <Link to="/cart" className="cart">BUY NOW</Link>
             </div>
         </div>
+        <div>
+            <h2>Related products</h2>
+            <div className="products">
+                {
+                    products.map(product => {
+                        return product.category === detailProduct.category
+                        ? <ProductItem key={product._id} product={product} /> : null
+                    })
+                }
+            </div>
+        </div>
+        </>
     )
     
 }
