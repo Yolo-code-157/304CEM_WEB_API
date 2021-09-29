@@ -2,9 +2,12 @@ import React from 'react'
 import {Link} from "react-router-dom"
 import "./ProductItem.css"
 
-function ProductItem({product}) {
+function ProductItem({product, isAdmin}) {
     return (
         <div className="product_card">
+            {
+             isAdmin && <input type="checkbox" checked={product.checked}/>
+            }
            {/* <img src={product.images.url} alt=""/> */}
            <img src={product.images} alt=""/>
            <div className="product_box">
@@ -14,12 +17,24 @@ function ProductItem({product}) {
                <p>{product.description}</p>
            </div>
            <div className="row_btn">
+           { isAdmin ? 
+           <>
+                <Link  id="btn_buy" to="#!" >
+                    DELETE
+                </Link>
+                <Link id="btn_view" to={`/edit_product/${product._id}`}>
+                    EDIT
+                </Link>
+                </>:
+                <>
                 <Link id="btn_buy" to="#!">
                     BUY
                 </Link>
                 <Link id="btn_view" to={`/detail/${product._id}`}>
                     View
                 </Link>
+           </>
+           }
            </div>
         </div>
     )
