@@ -85,12 +85,27 @@ refreshToken: async (req,res)=>{
     
 },
 
-getUser: async (req,res) =>{
+getUser: async (req, res) =>{
     try {
         const user = await Users.findById(req.user.id).select('-password')
         if(!user) return res.status(400).json({msg:"user does not exist"})
 
         return res.json(user)
+    } catch (err) {
+        return res.status(500).json({msg: err.message})
+    }
+},
+
+addCart: async (req,res) =>{
+    try {
+        const user = await Users.findById(req.user.id)
+
+        if(!user) return res.status(400).json({msg:"user does not exist"})
+        await Users.findOneAndUpdate({_id: req.user.id},{
+            cart:req.body.cart
+        })
+
+        return res.json({msg: 'added to Cart'})
     } catch (err) {
         return res.status(500).json({msg: err.message})
     }
