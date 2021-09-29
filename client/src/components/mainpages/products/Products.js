@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import {GlobalState} from "../../../GlobalState";
+import Loading from '../utils/Loading/Loading';
 import ProductItem from '../utils/Product_item/ProductItem';
 import "./Product.css"
 
@@ -10,6 +11,7 @@ function Products() {
     
     console.log(products)
     return (
+        <>
         <div className="products">
             {
                 products.map(product =>{
@@ -17,6 +19,10 @@ function Products() {
                 })
             }
         </div>
+            {
+                products.length === 0 && <Loading/>
+            }
+        </>
     )
 }
 
