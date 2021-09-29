@@ -32,7 +32,7 @@ function ProductItem({product, isAdmin}) {
                 </>:
                 <>
                 <Link id="btn_buy" to="#!" onClick={()=>addCart(product)}>
-                    BUY
+                    ADD
                 </Link>
                 <Link id="btn_view" to={`/detail/${product._id}`}>
                     View

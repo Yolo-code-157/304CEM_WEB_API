@@ -9,6 +9,8 @@ import DetailProduct from "./products/detailProducts/DetailProduct"
 
 import {GlobalState} from "../../GlobalState"
 
+import Categories from "./categories/Categories";
+
 function Pages(){
     const state = useContext(GlobalState)
     const [isLogged] = state.userAPI.isLogged
@@ -18,6 +20,7 @@ function Pages(){
             <Route path="/" exact component={Products} />
             <Route path="/login" exact component={isLogged ? NotFound : Login} />
             <Route path="/register" exact component={isLogged ? NotFound : Register} />
+            <Route path="/category" exact component={isLogged ? Categories : NotFound } />
             <Route path="/cart" exact component={Cart} />
             <Route path="/detail/:id" exact component={DetailProduct} />
 
