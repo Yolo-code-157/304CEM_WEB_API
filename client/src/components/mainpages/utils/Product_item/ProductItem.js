@@ -13,7 +13,7 @@ function ProductItem({product, isAdmin}) {
              isAdmin && <input type="checkbox" checked={product.checked}/>
             }
            {/* <img src={product.images.url} alt=""/> */}
-           <img src={product.images} alt=""/>
+           <img src={product.images.url} alt=""/>
            <div className="product_box">
                <h2>{product.title}</h2>
 

@@ -14,7 +14,6 @@ const initialState = {
     _id: ''
 }
 
-
 function CreateProduct() {
     const [product, setProduct] = useState(initialState)
     const state = useContext(GlobalState)
@@ -90,7 +89,7 @@ function CreateProduct() {
 
     return (
         <div className="create_product">
-            <div className="upload"><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div className="upload"><br/><br/>
                 <input type="file" name="file" id="file_up" onChange={handleUpload}/>
                 {
                     loading ? <div id="file_img"><br/><br/><br/><br/><Loading/> </div>
@@ -105,7 +104,7 @@ function CreateProduct() {
                 <div className="row">
                     <label htmlFor="product_id">Product_id</label>
                     <input type="text" name="product_id" id="product_id" 
-                    required value={product.product_id} onChange={handleChangeInput}/>
+                    required value={product.product_id} onChange={handleChangeInput} />
                 </div>
 
                 <div className="row">
@@ -133,18 +132,18 @@ function CreateProduct() {
                 </div>
 
                 <div className="row">
-                    <label htmlFor="category">Category</label><br/>
-                    <select name="category" id="category" value={product.category}>
-                        <option value="">Please select a category</option>
-                        {
-                            categories.map(category => (
-                                <option key={category._id} value={category._id}>
-                                    {category.name}
-                                </option>
-                                    
-                            ))
-                        }
-                    </select>
+                    <label htmlFor="category">Category</label>
+                    <select name="category" id="category"
+                      value={product.category} onChange={handleChangeInput}>
+                          <option value="">Please Select a category</option>
+                          {
+                              categories.map(category=>(
+                                  <option  key={category._id} value={category._id}>
+                                      {category.name}
+                                  </option>
+                              ))
+                          }
+                      </select>
                 </div>
                 <br/>
                 <button type="submit">Create Product</button>
