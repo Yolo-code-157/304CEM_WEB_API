@@ -33,7 +33,6 @@ function CreateProduct() {
         try {
             if(!isAdmin) return alert("You are not an  Admin")
             const file = e.target.files[0]
-            
             if(!file) return   alert("File not exist")
             if(file.size > 1024 * 1024) return alert("Size is too large")
             if(file.type !== "image/jpeg" && file.type !== "image/png") return alert("file type not supported")
@@ -45,23 +44,26 @@ function CreateProduct() {
             const res = await  axios.post('/api/upload', formData, {
                 headers: {'content-type': 'multipart/form-data' , Authorization : token }
             })
-
             setLoading(false)
             setImages(res.data)
-
         } catch (err) {
             alert(err.response.data.msg)
         }
     }
 
+
     return (
         <div className="create_product">
             <div className="upload">
                 <input type="file" name="file" id="file-up" onChange={handleUpload}/>
-                <div id="file_img" style={styleUpload}>
-                    <img src="" alt=""/>
-                    <span>X</span>
+                {
+                    loading ? <div id="file_img"><Loading/> </div>
+                
+                : <div id="file_img" style={styleUpload}>
+                    <img src={images ? images.url : ''} alt=""/>
+                    
                 </div>
+                }
             </div>
             <form >
                 <div className="row">
