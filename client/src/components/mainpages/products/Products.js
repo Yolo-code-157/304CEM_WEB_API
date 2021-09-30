@@ -11,14 +11,16 @@ function Products() {
     const [products, setProducts] = state.productsAPI.products
     const [isAdmin] = state.userAPI.isAdmin
     const addCart = state.userAPI.addCart
+    const [callback, setCallback] = state.productsAPI.callback
 
-    const getProducts = async()=>{
-        const res = await axios.get('/api/products')
-        setProducts(res.data.products);
-    }
+    
     useEffect(()=>{
+        const getProducts = async()=>{
+            const res = await axios.get('/api/products')
+            setProducts(res.data.products);
+        }
         getProducts()
-    },[])
+    },[setProducts, products])
 
     console.log(products)
     return (

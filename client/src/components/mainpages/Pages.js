@@ -22,7 +22,8 @@ function Pages(){
             <Route path="/login" exact component={isLogged ? NotFound : Login} />
             <Route path="/register" exact component={isLogged ? NotFound : Register} />
             <Route path="/category" exact component={isLogged ? Categories : NotFound } />
-            <Route path="/create_product" exact component={isLogged ? CreateProduct : NotFound } />
+            <Route path="/create_product" exact component={isLogged ? CreateProduct : NotFound } />\            <Route path="/create_product" exact component={isLogged ? CreateProduct : NotFound } />
+            <Route path="/edit_product/:id" exact component={isLogged ? CreateProduct : NotFound } />
             <Route path="/cart" exact component={Cart} />
             <Route path="/detail/:id" exact component={DetailProduct} />
 

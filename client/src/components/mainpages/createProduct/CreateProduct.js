@@ -1,9 +1,9 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import axios from "axios"
 import {GlobalState} from "../../../GlobalState"
 import Loading from "../utils/Loading/Loading"
 import "./createProject.css"
-import {useHistory} from "react-router-dom"
+import {useHistory, useParams} from "react-router-dom"
 
 const initialState = {
     product_id:'',
@@ -24,6 +24,28 @@ function CreateProduct() {
     const [isAdmin] = state.userAPI.isAdmin
     const [token] = state.token
     const history = useHistory()
+    const param = useParams()
+    const [products, setProducts] = state.productsAPI.products
+    const [onEdit, setOnEdit] = useState(false)
+
+    const [callback, setCallback]= state.productsAPI.callback
+
+    useEffect(()=>{
+        setOnEdit(true)
+        if(param.id){
+            products.forEach(product => {
+                if(product._id === param.id) {
+                    setProduct(product) 
+                    setImages(product.images)
+                }
+            })
+            
+        }else{
+            setOnEdit(false)
+            setImages(false)
+            setProduct(initialState)
+        }
+    },[param.id])
 
     const styleUpload = {
         display: images ? 'block' : 'none'
@@ -78,12 +100,19 @@ function CreateProduct() {
             if(!isAdmin) return alert("you are not Admin")
             if(!images) return alert("no image found")
             
-            await axios.post('/api/products', {...product, images}, {
-                headers: {Authorization : token}
-            })
+            if(onEdit) {
+                await axios.put(`/api/products/${product._id}`, {...product, images}, {
+                    headers: {Authorization : token}
+                })
+            }else {
+                await axios.post('/api/products', {...product, images}, {
+                    headers: {Authorization : token}
+                })
+            }
            
             setImages(false)
             setProduct(initialState)
+            setCallback(!callback)
             history.push('/')
         } catch (err) {
             alert(err.response.data.msg)
@@ -107,7 +136,7 @@ function CreateProduct() {
                 <div className="row">
                     <label htmlFor="product_id">Product_id</label>
                     <input type="text" name="product_id" id="product_id" 
-                    required value={product.product_id} onChange={handleChangeInput} />
+                    required value={product.product_id} onChange={handleChangeInput} disabled={onEdit}/>
                 </div>
 
                 <div className="row">
@@ -149,7 +178,7 @@ function CreateProduct() {
                       </select>
                 </div>
                 <br/>
-                <button type="submit">Create Product</button>
+                <button type="submit">{onEdit ? "Edit Product" : "Create Product" }</button>
             </form>
         </div>
     )
