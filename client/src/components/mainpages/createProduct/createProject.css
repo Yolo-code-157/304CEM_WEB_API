@@ -26,17 +26,18 @@
 }
 
 #file_up::before{
-    content: '+';
+    content: "add image";
     position: absolute;
+    height: 17%;
     width: 100%;
-    height: 100%;
-    top:0;
-    left:0;
-    background: whitesmoke;
+    left: 0;
+    background: rgb(243, 243, 243);
     color:crimson;
-    font-size: 17rem;
+    font-size: 3rem;
     text-align: center;
     margin:auto;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgb(196, 196, 196);
 }
 
 #file_img{
@@ -45,10 +46,11 @@
     display: cover;
     display: block;
     position:absolute;
+    
     top:0;
     left:0;
     background: whitesmoke;
-    border-radius: 8px;
+    border-radius: 9px;
 }
 
 #file_img img{
@@ -56,7 +58,8 @@
     height: 100%;
     display: block;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 9px;
+    
 }
 
 #file_img span{
