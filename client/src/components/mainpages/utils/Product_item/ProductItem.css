@@ -1,10 +1,10 @@
 .product_card{
-    max-width: 210px;
+    max-width: 370px;
     overflow: hidden;
-    max-height: 410px;
+    max-height: 550px;
     padding: 10px;
     box-shadow: 0 0 15px rgb(196, 196, 196);
-    margin: 0 0 10px 0;
+    margin: 0 0 70px 0;
     position: relative;
     border-radius: 8px 8px 8px 8px;
 }
@@ -15,12 +15,12 @@
     display: block;
     object-fit: cover;
     /* position: relative; */
-    border-radius: 8px 18px 8px 18px ;
+    border-radius: 18px 38px 18px 38px ;
     border: 2px solid rgb(148, 148, 148);
 }
 
 .product_card img:hover{
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .product_box{
