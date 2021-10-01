@@ -4,6 +4,7 @@ import Loading from '../utils/Loading/Loading';
 import ProductItem from '../utils/Product_item/ProductItem';
 import "./Product.css"
 import axios from 'axios'
+import Filters from "../utils/Product_item/Filters"
 
 function Products() {
     const state = useContext(GlobalState)
@@ -59,7 +60,7 @@ function Products() {
 
     return (
         <>
-         {/* <Filters /> */}
+         <Filters />
         {
             isAdmin && 
             <div className="delete-all" style={{textAlign:"right", margin:'20px'}}>
