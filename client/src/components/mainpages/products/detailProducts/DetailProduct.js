@@ -29,11 +29,11 @@ function DetailProduct() {
             <div className="box-detial">
                 <div className="row">
                     <h2>{detailProduct.title}</h2>
-                    <h6>{detailProduct.product_id}</h6><br/>
+                    <h6>{detailProduct.product_id}</h6>
                 </div>
-                <span>${detailProduct.price}</span><br/><br/>
-                <p>{detailProduct.content}</p><br/><br/><br/>
-                <p>{detailProduct.description}</p><br/><br/>
+                <h5>${detailProduct.price}</h5><br/>
+                <p><h4 style={{textDecoration:'underline', color:'whitesmoke'}}>{detailProduct.content}</h4></p><br/>
+                <p><h4 style={{textDecoration:'underline', color:'whitesmoke'}}>{detailProduct.description}</h4></p><br/>
                 <p>Sold: {detailProduct.sold}</p><br/><br/>
                 <Link to="/cart" className="cart">BUY NOW</Link>
             </div>

@@ -36,6 +36,7 @@
     width: 25px;
     z-index: 4;
 }
+
 .product_box h2{
     width:100%;
     text-overflow: ellipsis;
