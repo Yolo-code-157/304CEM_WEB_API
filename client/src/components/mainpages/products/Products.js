@@ -5,6 +5,7 @@ import ProductItem from '../utils/Product_item/ProductItem';
 import "./Product.css"
 import axios from 'axios'
 import Filters from "../utils/Product_item/Filters"
+import LoadMore from '../utils/Product_item/LoadMore';
 
 function Products() {
     const state = useContext(GlobalState)
@@ -76,11 +77,12 @@ function Products() {
                     isAdmin={isAdmin} callback={callback} setCallback={setCallback} deleteProduct={deleteProduct} products={products}/>
                 })
             }
-        </div>
+        </div><LoadMore/>
             {
                 products.length === 0 && <Loading/>
             }
         </>
+        
     )
 }
 

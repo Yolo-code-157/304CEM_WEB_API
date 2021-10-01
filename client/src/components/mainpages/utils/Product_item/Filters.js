@@ -1,5 +1,5 @@
 import React , {useContext} from 'react'
-//import "./Filter.css"
+import "./Filter.css"
 import {GlobalState} from "../../../../GlobalState"
 
 function Filters() {

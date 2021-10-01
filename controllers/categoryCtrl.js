@@ -30,7 +30,8 @@ createCategory:async (req,res)=>{
 
 deleteCategory: async (req,res)=>{
     try {
-        
+        const products = await Products.findOne({category: req.params.id})
+        if(products) return res.status(400).json({msg: 'please delete related products as well'})
         await Category.findByIdAndDelete(req.params.id)
         res.json({msg: "category deleted successfully"})
     } catch (err) {
